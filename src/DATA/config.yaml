@@ -1,9 +1,0 @@
-train: E:/DATA SCIENCE/projects/dl/EgyptianNationalId/src/DATA/train/images
-val: E:/DATA SCIENCE/projects/dl/EgyptianNationalId/src/DATA/valid/images
-
-
-# Number of classes
-nc: 6
-
-# Class name
-names: ['Code', 'city', 'family name', 'name', 'neighborhood', 'number']

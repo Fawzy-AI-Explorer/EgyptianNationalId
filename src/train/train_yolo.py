@@ -1,5 +1,8 @@
 """test yolov8 model"""
 from ultralytics import YOLO
+from src.utils.config_utils import load_config
+
+CONFIG = load_config()
 
 class Yolo:
     """YoloV8 model class for object detection"""
@@ -106,24 +109,32 @@ def main_fun():
     """Test the YoloV8 model class"""
     print("[INFO] Starting YoloV8 training and prediction test")
 
-    test_image_path = r"src\test\test_images\my_test_img3.jpeg"
+    # test_image_path = r"/teamspace/studios/this_studio/EgyptianNationalId/src/test/test_images/my_test_img3.jpeg"
 
-    model_path = r"yolov8n.pt" 
+    # model_path = CONFIG["YOLO_PATH"]["YOLOV8n"]
+    model_path_last = CONFIG["YOLO_PATH"]["YOLOV8n_LAST"]
+    model_path_best = CONFIG["YOLO_PATH"]["YOLOV8n_BEST"]
+
     print_logs = True
 
-    yolo = Yolo(model_path=model_path, print_logs=print_logs)
+    yolo = Yolo(model_path=model_path_last, print_logs=print_logs)
+
+    detection_results = yolo.predict(r"/teamspace/studios/this_studio/EgyptianNationalId/DATA/valid/images/Votre-texte-de-paragraphe-15-_png_jpg.rf.a29694fd27fc79419bb338d601a9a972.jpg", show_res=True, save=True)
 
 
-    yolo.train(
-        data=r"src\DATA\config.yaml",  
-        epochs=3,
-        enable_checkpoint_saving=True,
-        save_period=1
-    )
+    # yolo.train(
+    #     # data=r"/teamspace/studios/this_studio/EgyptianNationalId/DATA/config.yaml",  
+    #     data = CONFIG["PATH"]["train_config"],
+    #     epochs=30,
+    #     enable_checkpoint_saving=True,
+    #     save_period=1
+    # )
+
+    # detection_results = yolo.predict(r"/teamspace/studios/this_studio/EgyptianNationalId/DATA/valid/images/45_jpg.rf.772f20124092554b7d5b06e78b12d59f.jpg", show_res=True, save=True)
 
 
 
-    detection_results = yolo.predict(test_image_path, show_res=True, save=True)
+    # detection_results = yolo.predict(test_image_path, show_res=True, save=True)
 
     # return detection_results
 
