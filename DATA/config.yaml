@@ -1,0 +1,9 @@
+train: /teamspace/studios/this_studio/EgyptianNationalId/DATA/train/images
+val: /teamspace/studios/this_studio/EgyptianNationalId/DATA/valid/images
+
+
+# Number of classes
+nc: 6
+
+# Class name
+names: ['Code', 'city', 'family name', 'name', 'neighborhood', 'number']

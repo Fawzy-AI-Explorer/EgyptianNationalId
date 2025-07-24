@@ -1,0 +1,10 @@
+PATH:
+  train_config: /teamspace/studios/this_studio/EgyptianNationalId/DATA/config.yaml
+
+
+
+
+YOLO_PATH:
+  YOLOV8n: yolov8n.pt
+  YOLOV8n_LAST: /teamspace/studios/this_studio/EgyptianNationalId/runs/train/train2/weights/last.pt
+  YOLOV8n_BEST: /teamspace/studios/this_studio/EgyptianNationalId/runs/train/train2/weights/best.pt
