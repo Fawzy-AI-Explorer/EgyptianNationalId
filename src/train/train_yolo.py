@@ -74,7 +74,7 @@ class Yolo:
         """
         if self.print_logs:
             print(f"[INFO] Performing prediction on image: {image_path}")
-        results = self.model(image_path, save=save, conf=0.3, iou=0.3, project="runs/detect")
+        results = self.model(image_path, save=save, conf=0.3, iou=0.3, project="runs/detect", show_boxes=False, show_labels=True, save_crop=True)
         if show_res:
             results[0].show()
         # if save:
@@ -110,16 +110,26 @@ def main_fun():
     print("[INFO] Starting YoloV8 training and prediction test")
 
     # test_image_path = r"/teamspace/studios/this_studio/EgyptianNationalId/src/test/test_images/my_test_img3.jpeg"
+    # test_image_path = r"/teamspace/studios/this_studio/EgyptianNationalId/DATA/valid/images/45_jpg.rf.772f20124092554b7d5b06e78b12d59f.jpg"
+    test_image_path = r"/teamspace/studios/this_studio/EgyptianNationalId/DATA/valid/images/Votre-texte-de-paragraphe-40-_png_jpg.rf.3bf1416c1b2026b0f55b37cce0bf668e.jpg"
+
 
     # model_path = CONFIG["YOLO_PATH"]["YOLOV8n"]
-    model_path_last = CONFIG["YOLO_PATH"]["YOLOV8n_LAST"]
-    model_path_best = CONFIG["YOLO_PATH"]["YOLOV8n_BEST"]
+    # model_path_last = CONFIG["YOLO_PATH"]["YOLOV8n_LAST"]
+    # model_path_best = CONFIG["YOLO_PATH"]["YOLOV8n_BEST"]
+    model_path_seg = CONFIG["YOLO_PATH"]["YOLOV8n_SEG_LAST"]
+
 
     print_logs = True
 
-    yolo = Yolo(model_path=model_path_last, print_logs=print_logs)
+    yolo = Yolo(model_path=model_path_seg, print_logs=print_logs)
 
-    detection_results = yolo.predict(r"/teamspace/studios/this_studio/EgyptianNationalId/DATA/valid/images/Votre-texte-de-paragraphe-15-_png_jpg.rf.a29694fd27fc79419bb338d601a9a972.jpg", show_res=True, save=True)
+    detection_results = yolo.predict(test_image_path, show_res=True, save=True)
+        # Access the results
+    for result in detection_results:
+        xy = result.masks.xy  # mask in polygon format
+        xyn = result.masks.xyn  # normalized
+        masks = result.masks.data  # mask in matrix format (num_objects x H x W)
 
 
     # yolo.train(
