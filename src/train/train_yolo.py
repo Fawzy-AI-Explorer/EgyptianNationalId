@@ -104,6 +104,7 @@ class Yolo:
             print(f"[INFO] Exporting YoloV8 model to format: {format}")
         success = self.model.export(format=format)
         return success
+    
 
 def main_fun():
     """Test the YoloV8 model class"""
@@ -111,7 +112,7 @@ def main_fun():
 
     # test_image_path = r"/teamspace/studios/this_studio/EgyptianNationalId/src/test/test_images/my_test_img3.jpeg"
     # test_image_path = r"/teamspace/studios/this_studio/EgyptianNationalId/DATA/valid/images/45_jpg.rf.772f20124092554b7d5b06e78b12d59f.jpg"
-    test_image_path = r"E:\DATA SCIENCE\projects\dl\EgyptianNationalId\DATA\train\images\2_jpg.rf.1e15b1bf037758b9c1dc8650f8212260.jpg"
+    test_image_path = r"src\WhatsApp Image 2025-07-25 at 5.24.19 PM.jpeg"
 
 
     # model_path = CONFIG["YOLO_PATH"]["YOLOV8n_SEG"]
