@@ -111,7 +111,7 @@ def main_fun():
 
     # test_image_path = r"/teamspace/studios/this_studio/EgyptianNationalId/src/test/test_images/my_test_img3.jpeg"
     # test_image_path = r"/teamspace/studios/this_studio/EgyptianNationalId/DATA/valid/images/45_jpg.rf.772f20124092554b7d5b06e78b12d59f.jpg"
-    test_image_path = r"/teamspace/studios/this_studio/plots/aug/aug_2.png"
+    test_image_path = r"/teamspace/studios/this_studio/EgyptianNationalId/DATA/train/images/1_jpg.rf.75b5b56412c97c536682f70480f84752.jpg"
 
 
     # model_path = CONFIG["YOLO_PATH"]["YOLOV8n_SEG"]
@@ -122,7 +122,7 @@ def main_fun():
 
     print_logs = True
 
-    yolo = Yolo(model_path=model_path_seg, print_logs=print_logs)
+    yolo = Yolo(model_path=model_path, print_logs=print_logs)
 
     detection_results = yolo.predict(test_image_path, show_res=True, save=True)
 
@@ -130,12 +130,12 @@ def main_fun():
     # yolo.train(
     #     # data=r"/teamspace/studios/this_studio/EgyptianNationalId/DATA/config.yaml",  
     #     data = CONFIG["PATH"]["train_config"],
-    #     epochs=30,
+    #     epochs=50,
     #     enable_checkpoint_saving=True,
-    #     save_period=1
+    #     save_period=5
     # )
 
-    detection_results = yolo.predict(test_image_path, show_res=True, save=True)
+    # detection_results = yolo.predict(test_image_path, show_res=True, save=True)
 
     # return detection_results
 

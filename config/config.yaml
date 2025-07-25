@@ -10,5 +10,5 @@ YOLO_PATH:
   YOLOV8n_BEST: /teamspace/studios/this_studio/EgyptianNationalId/runs/train/train2/weights/best.pt
 
   YOLOV8n_SEG: yolov8n-seg.pt
-  YOLOV8n_SEG_LAST: /teamspace/studios/this_studio/EgyptianNationalId/runs/train/train5/weights/last.pt
-  YOLOV8n_SEG_BEST: /teamspace/studios/this_studio/EgyptianNationalId/runs/train/train5/weights/best.pt
+  YOLOV8n_SEG_LAST: /teamspace/studios/this_studio/EgyptianNationalId/runs/train/train9/weights/last.pt
+  YOLOV8n_SEG_BEST: /teamspace/studios/this_studio/EgyptianNationalId/runs/train/train9/weights/best.pt
