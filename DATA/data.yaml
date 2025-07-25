@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 6
+names: ['Code', 'city', 'family name', 'name', 'neighborhood', 'number']
+
+roboflow:
+  workspace: project1-jz5of
+  project: egyptian-id-seg-hhm4j-o2wai
+  version: 2
+  license: Private
+  url: https://universe.roboflow.com/project1-jz5of/egyptian-id-seg-hhm4j-o2wai/dataset/2
