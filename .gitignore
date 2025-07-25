@@ -3,7 +3,8 @@ __pycache__/
 *.py[codz]
 *$py.class
 
-
+cropped
+src/post_processing.py
 runs
 *.pt
 
