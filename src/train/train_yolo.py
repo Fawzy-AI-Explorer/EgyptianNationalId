@@ -61,7 +61,7 @@ class Yolo:
 
     def predict(self, 
                 image_path: str, 
-                show_res: bool = False, 
+                show_res: bool = True, 
                 save: bool = False
                 ):
         """
@@ -74,7 +74,7 @@ class Yolo:
         """
         if self.print_logs:
             print(f"[INFO] Performing prediction on image: {image_path}")
-        results = self.model(image_path, save=save, conf=0.3, iou=0.3, project="runs/detect", show_boxes=False, show_labels=True, save_crop=True)
+        results = self.model(image_path, save=save, conf=0.3, iou=0.3, project="runs/detect", show_boxes=True, save_crop=True)
         if show_res:
             results[0].show()
         # if save:
@@ -111,25 +111,18 @@ def main_fun():
 
     # test_image_path = r"/teamspace/studios/this_studio/EgyptianNationalId/src/test/test_images/my_test_img3.jpeg"
     # test_image_path = r"/teamspace/studios/this_studio/EgyptianNationalId/DATA/valid/images/45_jpg.rf.772f20124092554b7d5b06e78b12d59f.jpg"
-    test_image_path = r"/teamspace/studios/this_studio/EgyptianNationalId/DATA/valid/images/Votre-texte-de-paragraphe-40-_png_jpg.rf.3bf1416c1b2026b0f55b37cce0bf668e.jpg"
+    test_image_path = r"/teamspace/studios/this_studio/plots/aug/aug_2.png"
 
 
-    # model_path = CONFIG["YOLO_PATH"]["YOLOV8n"]
-    # model_path_last = CONFIG["YOLO_PATH"]["YOLOV8n_LAST"]
-    # model_path_best = CONFIG["YOLO_PATH"]["YOLOV8n_BEST"]
-    model_path_seg = CONFIG["YOLO_PATH"]["YOLOV8n_SEG_LAST"]
+    # model_path = CONFIG["YOLO_PATH"]["YOLOV8n_SEG"]
+
+    model_path = CONFIG["YOLO_PATH"]["YOLOV8n_SEG_LAST"]
+    # model_path = CONFIG["YOLO_PATH"]["YOLOV8n_SEG_BEST"]
 
 
     print_logs = True
 
-    yolo = Yolo(model_path=model_path_seg, print_logs=print_logs)
-
-    detection_results = yolo.predict(test_image_path, show_res=True, save=True)
-        # Access the results
-    for result in detection_results:
-        xy = result.masks.xy  # mask in polygon format
-        xyn = result.masks.xyn  # normalized
-        masks = result.masks.data  # mask in matrix format (num_objects x H x W)
+    yolo = Yolo(model_path=model_path, print_logs=print_logs)
 
 
     # yolo.train(
@@ -140,11 +133,7 @@ def main_fun():
     #     save_period=1
     # )
 
-    # detection_results = yolo.predict(r"/teamspace/studios/this_studio/EgyptianNationalId/DATA/valid/images/45_jpg.rf.772f20124092554b7d5b06e78b12d59f.jpg", show_res=True, save=True)
-
-
-
-    # detection_results = yolo.predict(test_image_path, show_res=True, save=True)
+    detection_results = yolo.predict(test_image_path, show_res=True, save=True)
 
     # return detection_results
 
