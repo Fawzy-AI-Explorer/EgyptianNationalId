@@ -125,11 +125,6 @@ def main_fun():
     yolo = Yolo(model_path=model_path_seg, print_logs=print_logs)
 
     detection_results = yolo.predict(test_image_path, show_res=True, save=True)
-        # Access the results
-    for result in detection_results:
-        xy = result.masks.xy  # mask in polygon format
-        xyn = result.masks.xyn  # normalized
-        masks = result.masks.data  # mask in matrix format (num_objects x H x W)
 
 
     # yolo.train(
